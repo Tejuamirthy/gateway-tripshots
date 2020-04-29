@@ -5,6 +5,7 @@ import com.tripshots.gateway.entity.User;
 import com.tripshots.gateway.model.UserDTO;
 import com.tripshots.gateway.repository.RoleRepository;
 import com.tripshots.gateway.repository.UserRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,12 +29,8 @@ public class UserService {
 
     public void saveUser(UserDTO userin) {
         User user = new User();
-        user.setEmail(userin.getEmail());
-        user.setName(userin.getName());
-        user.setUsername(userin.getUsername());
+        BeanUtils.copyProperties(userin, user);
         user.setPassword(bCryptPasswordEncoder.encode(userin.getPassword()));
-        Role userRole = roleRepository.findByRole(userin.getRole());
-        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
 
