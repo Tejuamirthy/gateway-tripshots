@@ -75,7 +75,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(restEntryPoint)
                 .and()
                 .authorizeRequests()
-                .antMatchers("**").authenticated()
+                .antMatchers("/s1/**").authenticated()
                 .and()
                 .formLogin()
                 .successHandler(successHandler)
