@@ -49,6 +49,9 @@ public class User {
     @Column(name = "phoneNumber")
     private Long phoneNumber;
 
+    @Column(name = "enabled")
+    private boolean enabled;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
