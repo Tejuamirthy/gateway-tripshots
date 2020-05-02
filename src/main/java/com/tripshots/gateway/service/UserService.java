@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -24,7 +25,7 @@ public class UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public User findUserByUsername(String username) {
-        return  userRepository.findByUsername(username);
+        return userRepository.findByUsername(username).orElse(null);
     }
 
     public void saveUser(UserDTO userin) {
