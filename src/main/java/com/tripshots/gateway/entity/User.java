@@ -46,7 +46,7 @@ public class User {
     @Column(name = "gender")
     private String gender;
 
-    @Column(name = "phoneNumber")
+    @Column(name = "phone_number")
     private Long phoneNumber;
 
     @Column(name = "enabled")
